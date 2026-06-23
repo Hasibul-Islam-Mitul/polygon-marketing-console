@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+    margin: 0;
+    /* Subtle vertical depth — keeps the charcoal from reading flat. */
+    background-image: radial-gradient(
+      120% 90% at 50% -10%,
+      #141518 0%,
+      #0b0b0d 55%
+    );
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: #6edc8233;
+    color: #ffffff;
+  }
+
+  /* Tabular figures everywhere numbers live. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+}
+
+@layer utilities {
+  .eyebrow {
+    @apply text-[11px] uppercase tracking-eyebrow text-ink-muted font-medium;
+  }
+
+  /* Thin, unobtrusive scrollbar that matches the surface. */
+  .scroll-quiet::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scroll-quiet::-webkit-scrollbar-thumb {
+    background: #2a2c31;
+    border-radius: 8px;
+  }
+  .scroll-quiet::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
